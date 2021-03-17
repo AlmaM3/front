@@ -1,41 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Form from './components/Form';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from './components/Home'
 
-interface AppProps {}
+import img from './Images/logos.svg'
 
-function App({}: AppProps) {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+import AddRemove from './components/AddRemove'
+import Protected from './components/Protected'
+
+interface Props{
+}
+
+class App extends Component {
+
+    state = {
+        message: undefined,
+        rfc: undefined,
+        fecha: undefined,
+        modificador: undefined
+    }
+
+    constructor(props: Props) {
+        super(props);
+    }
+
+    // getMessage = () => {
+    //     fetch("/add/rfc")
+    //     .then(response => 
+    //         response.text()
+    //         .then(textito =>
+    //             this.setState({
+    //                 message: textito
+    //             })
+    //         )
+    //     )
+    // }
+
+
+
+    render() {
+        return <> 
+            <div className="fixed">
+                <div className="cheems_container">
+                    <img src={img} className="image" alt=""/>
+                </div>
+            </div>
+            
+            
+            <h1 className="title">Consulta RFCs</h1>
+            <Router>
+                
+                <Route exact path= "/" component={Home}/> 
+                <Route path= "/api/addremove" component={AddRemove}/>
+                <Route path= "/api/protected" component={Protected}/>
+                
+            </Router>
+
+            {/* <button onClick={this.getMessage}>Get Message</button> */}
+            <div>{this.state.message}</div>
+            {/* <Form/> */}
+        </>;
+    }
 }
 
 export default App;
+
