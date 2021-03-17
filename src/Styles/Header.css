@@ -1,11 +1,11 @@
-.fixed {
+.header {
   height: 100px; 
   background: rgb(155, 34, 66);
   position: sticky;
   width: 100%;
 }
 
-.cheems_container {
+.header__image-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   width: 600px;
 }
 
-.image {  
+.header__image {  
    height: 70%;
 }
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+
 import Form from './components/Form';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import Home from './components/Home'
-
-import img from './Images/logos.svg'
-
+import Header from './components/Header'
 import AddRemove from './components/AddRemove'
 import Protected from './components/Protected'
+
 
 interface Props{
 }
@@ -40,12 +40,15 @@ class App extends Component {
 
 
     render() {
-        return <> 
-            <div className="fixed">
+        return <>
+        
+            <Header/>
+
+            {/* <div className="fixed">
                 <div className="cheems_container">
                     <img src={img} className="image" alt=""/>
                 </div>
-            </div>
+            </div> */}
             
             
             <h1 className="title">Consulta RFCs</h1>
