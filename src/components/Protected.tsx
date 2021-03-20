@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useTable, Column } from 'react-table';
+import { useTable, Column, usePagination } from 'react-table';
 
 export interface Data {
   rfc: String,
@@ -92,7 +92,7 @@ getJson = () => {
               this.setState({
                 data: json
               })
-              console.log(this.state)
+              console.log(this.state.data)
             })
         )
 }

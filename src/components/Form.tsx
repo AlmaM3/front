@@ -92,7 +92,7 @@ class Form extends Component {
                     <input 
                         name="fecha"
                         onChange={this.handleChange}
-                        type="text"
+                        type="date"
                     />
                 </label><br/>
 
