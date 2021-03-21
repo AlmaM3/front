@@ -22,6 +22,26 @@ interface Dato {
   
 }
 
+class Checkbox extends Component {
+  constructor(props:Props) {
+    super(props);
+    // this.props.param= "Erick";
+    this.state = {  };
+  }
+  render() {
+
+    
+    return (
+      <>
+      {this.props}
+      </>
+    );
+  }
+}
+
+
+
+
 let Table = ({data}:{data:Dato[]}) => {
 
   // let s: Susano = {input: <input type="checkbox"/>} 
@@ -64,9 +84,12 @@ let Table = ({data}:{data:Dato[]}) => {
     } = useTable({columns, data}, usePagination);
 
 
+    let borrar:String[]= [];
+  
+
     return (<>
 
-        {console.log(columns[0].Header)}
+        
         <code>
           {JSON.stringify(
             {
@@ -103,15 +126,26 @@ let Table = ({data}:{data:Dato[]}) => {
                   // const { id } = cell.row.original;
                   if (cell.column.Header === '    ') {
                     return (
-                      <td id="check"><input type ="checkbox"/></td>
+                      
+                      <td onChange={()=> {borrar.push(cell.row.values.rfc); 
+                      console.log(borrar)
+                      }
+                      
+                      }>
+                        
+                        <input type ="checkbox"/></td>
+                      
+
                     );
                   }
                   return (
                     <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                   );
                 })}
+        
               </tr>
-
+{console.log("imprimiendo...")}
+        
             </>    
             })}
         </tbody>
@@ -159,7 +193,8 @@ getJson = () => {
     
     
     <Table data= {this.state.data}/>
-    </>
+    {/* <Checkbox param={"jiji"}/> */}
+          </>
   }
   
 }   
