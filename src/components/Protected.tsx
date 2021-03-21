@@ -103,7 +103,7 @@ let Table = ({data}:{data:Dato[]}) => {
                   // const { id } = cell.row.original;
                   if (cell.column.Header === '    ') {
                     return (
-                      <td><input type ="checkbox"/></td>
+                      <td id="check"><input type ="checkbox"/></td>
                     );
                   }
                   return (
@@ -156,6 +156,7 @@ getJson = () => {
     
     return<>
     <button onClick= {this.getJson}>Conseguir</button>
+    
     
     <Table data= {this.state.data}/>
     </>
