@@ -1,21 +1,45 @@
 import React, { Component } from 'react';
-import { useTable, Column, usePagination } from 'react-table';
+import { useTable, Column, usePagination, TableInstance} from 'react-table';
+
+
 
 export interface Data {
+  input:JSX.Element
   rfc: String,
   fecha: String,
   modificador: String
 }
 
+class Input {
+  render () {}
+}
 
-let Table = ({data}:{data:Data[]}) => {
+// interface Susano {
+//   input:JSX.Element
+// }
 
-  const columns: Column<Data>[] = React.useMemo(
+interface Dato {
+  
+}
+
+let Table = ({data}:{data:Dato[]}) => {
+
+  // let s: Susano = {input: <input type="checkbox"/>} 
+
+  const columns: Column<Dato>[] = React.useMemo(
     () => [
+
+      { 
+        // id: 'selection',
+        Header: '    ',
+        accessor: 'box', // accessor is the "key" in the data
+      },
+           
       {
         Header: 'RFC',
         accessor: 'rfc', // accessor is the "key" in the data
       },
+     
       {
         Header: 'FECHA',
         accessor: 'fecha',
@@ -24,20 +48,40 @@ let Table = ({data}:{data:Data[]}) => {
         Header: 'MODIFICADOR',
         accessor: 'modificador',
       },
+      
     ],
     []
   )
 
-       const {
+       const {     
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
         prepareRow,
-    } = useTable({columns, data});
+        rows,
+
+       
+    } = useTable({columns, data}, usePagination);
 
 
-    return (
+    return (<>
+
+        {console.log(columns[0].Header)}
+        <code>
+          {JSON.stringify(
+            {
+              // pageIndex,
+              // pageSize,
+              // pageCount,
+              // canNextPage,
+
+              // canPreviousPage,
+            },
+            null,
+            2
+          )}
+        </code>
+
     <table {...getTableProps()}>
         <thead>
             {headerGroups.map(headerGroup => (
@@ -54,17 +98,25 @@ let Table = ({data}:{data:Data[]}) => {
             {rows.map(row => {
                 prepareRow(row)
                 return <>
-                    <tr {...row.getRowProps()}>
-                        {row.cells.map(cell => (
-                            <td {...cell.getCellProps()}>
-                                {cell.render('Cell')}
-                            </td>
-                        ))}
-                    </tr>
-                </>    
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                  // const { id } = cell.row.original;
+                  if (cell.column.Header === '    ') {
+                    return (
+                      <td><input type ="checkbox"/></td>
+                    );
+                  }
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  );
+                })}
+              </tr>
+
+            </>    
             })}
         </tbody>
     </table>
+    </>
   )
 }
 
