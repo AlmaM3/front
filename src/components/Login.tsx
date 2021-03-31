@@ -16,16 +16,14 @@ class Login_Form extends Component {
     // }
 
     state = {
-  
         rfc: undefined,
         password: undefined,
-       
     }
 
     
 
     handleClick = (e: any) => {
-        // Para evitar que la paágina se recargue al dar submit
+        // Para evitar que la página se recargue al dar submit
         e.preventDefault();
 
 
