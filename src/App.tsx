@@ -7,7 +7,7 @@ import Home from './components/Home'
 import Header from './components/Header'
 import AddRemove from './components/AddRemove'
 import Protected from './components/Protected'
-
+import Login from './components/Login'
 
 interface Props{
 }
@@ -57,6 +57,7 @@ class App extends Component {
                 <Route exact path= "/" component={Home}/> 
                 <Route path= "/api/addremove" component={AddRemove}/>
                 <Route path= "/api/protected" component={Protected}/>
+                <Route path= "/api/login" component={Login}/>
                 
             </Router>
 
