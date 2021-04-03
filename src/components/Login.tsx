@@ -21,7 +21,8 @@ class Login extends Component {
     state = {
         message: undefined,
         rfc: undefined,
-        password: undefined
+        password: undefined, 
+
         
     }
 
@@ -78,6 +79,9 @@ class Login extends Component {
     }
 
     render() {
+
+
+
         return (
             <>
             
@@ -97,7 +101,7 @@ class Login extends Component {
                     />
             </label><br/>
 
-            <button type = "submit" onClick={this.handleClick}>Get message</button><br/>
+            <button type = "submit" onClick={this.handleClick}>Iniciar sesión</button><br/>
 
             <p>
                 {JSON.stringify(this.state)}
