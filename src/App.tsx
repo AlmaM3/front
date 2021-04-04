@@ -8,6 +8,7 @@ import Header from './components/Header'
 import AddRemove from './components/AddRemove'
 import Protected from './components/Protected'
 import Login from './components/Login'
+import Menu from './components/Menu'
 
 interface Props{
 }
@@ -40,6 +41,7 @@ class App extends Component {
 
 
     render() {
+        
         return <>
         
             <Header/>
@@ -53,12 +55,13 @@ class App extends Component {
             
             <h1 className="title">Consulta RFCs</h1>
             <Router>
-                
-                <Route exact path= "/" component={Home}/> 
-                <Route path= "/api/addremove" component={AddRemove}/>
-                <Route path= "/api/protected" component={Protected}/>
-                <Route path= "/api/login" component={Login}/>
-                
+                {/* <Switch> */}
+                    <Route exact path= "/" component={Home}/> 
+                    <Route path= "/api/addremove" component={AddRemove}/>
+                    <Route path= "/api/protected" component={Protected}/>
+                    <Route path= "/api/login" component={Login}/>
+                    <Route path= "/api/menu" component={Menu}/>
+                {/* </Switch> */}
             </Router>
 
             {/* <button onClick={this.getMessage}>Get Message</button> */}
