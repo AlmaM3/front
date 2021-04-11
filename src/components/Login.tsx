@@ -67,7 +67,7 @@ class Login extends Component <Props> {
             } else {
                 this.redirectToHome()
 
-                // alert(`Vales verga ${res.status}`)
+                alert(`Falló inicio de sesión. Verifique usuario o contraseña `)  // ${res.status}
             }
         } , rejected => {
             console.log(rejected)

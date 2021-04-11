@@ -34,6 +34,12 @@ let Table = ({data}:{data:Dato[]}) => {
         Header: '    ',
         accessor: 'box', // accessor is the "key" in the data
       },
+
+       { 
+        // id: 'selection',
+        Header: 'ID',
+        accessor: 'id', // accessor is the "key" in the data
+      },
            
       {
         Header: 'RFC',
