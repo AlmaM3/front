@@ -137,7 +137,7 @@ class Login extends Component <Props> {
 
                         <button type = "submit" onClick={this.handleClick}>Iniciar sesión</button><br/>
 
-                        <button type = "submit" onClick={this.redirectToHome}>Props</button><br/>
+                        {/* <button type = "submit" onClick={this.redirectToHome}>Props</button><br/> */}
 
 
                         <p>

@@ -73,8 +73,9 @@ let Table = ({data}:{data:Dato[]}) => {
     return (<>
 
         {console.log(columns[0].Header)}
-        <code>
-          {JSON.stringify(
+        {/* columns[0].Header)  */}
+        {/* <code>
+          {/* {JSON.stringify(
             {
               // pageIndex,
               // pageSize,
@@ -85,8 +86,9 @@ let Table = ({data}:{data:Dato[]}) => {
             },
             null,
             2
-          )}
-        </code>
+          )} */
+        // </code> *
+        }
 
     <table {...getTableProps()}>
         <thead>
@@ -126,6 +128,23 @@ let Table = ({data}:{data:Dato[]}) => {
   )
 }
 
+interface Button {
+  button: boolean,
+  data: Dato[]
+}
+
+
+let GetTable = (params:Button) => {
+  const {button, data} = params;
+  if (button) {
+    return <Table data={data}/>
+  } else {
+    return(
+    <div>
+      Aquí se mostrará la tabla
+    </div>)
+  }
+}
 
 
 
@@ -134,25 +153,29 @@ interface Props {
 }
 
 interface State {
-  data : Data[]
+  data : Data[],
+  button: boolean,
 }
 
 class Protected extends Component<Props, State> {
 
   state = {
-    data: []
+    data: [], 
+    button: false,
   }
   
-getJson = () => {
+getJson = (e: any) => {
    fetch("/protected")
          .then(res => res.json()
             .then(json => {
               this.setState({
-                data: json
+                // data: json
+                data: json.map((equis: string) => JSON.parse(equis)) 
               })
               console.log(this.state.data)
             })
         )
+ this.setState({button: true})
 }
 
 
@@ -161,10 +184,9 @@ getJson = () => {
   render() {
     
     return<>
-    <button onClick= {this.getJson}>Conseguir</button>
-    
-    
-    <Table data= {this.state.data}/>
+    <button id = "1" onClick= {this.getJson}>Conseguir</button>
+        
+    <GetTable button= {this.state.button} data= {this.state.data}/>
     </>
   }
   
